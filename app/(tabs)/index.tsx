@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -14,41 +14,51 @@ export default function HomeScreen() {
           source={require('@/assets/images/partial-react-logo.png')}
           style={styles.reactLogo}
         />
-      }>
+      }
+    >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+        <ThemedText type="title">Dashboard</ThemedText>
         <HelloWave />
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
+
+      {/* Stats Section */}
+      <ThemedView style={styles.section}>
+        <ThemedText type="subtitle">Stats</ThemedText>
+        <View style={styles.statsRow}>
+          <ThemedView style={styles.statBox}>
+            <ThemedText type="title">12</ThemedText>
+            <ThemedText>Tasks</ThemedText>
+          </ThemedView>
+          <ThemedView style={styles.statBox}>
+            <ThemedText type="title">5</ThemedText>
+            <ThemedText>Messages</ThemedText>
+          </ThemedView>
+          <ThemedView style={styles.statBox}>
+            <ThemedText type="title">3</ThemedText>
+            <ThemedText>Alerts</ThemedText>
+          </ThemedView>
+        </View>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
+
+      {/* Quick Actions Section */}
+      <ThemedView style={styles.section}>
+        <ThemedText type="subtitle">Quick Actions</ThemedText>
+        <View style={styles.actionsRow}>
+          <ThemedView style={styles.actionButton}>
+            <ThemedText type="defaultSemiBold">+ Add Task</ThemedText>
+          </ThemedView>
+          <ThemedView style={styles.actionButton}>
+            <ThemedText type="defaultSemiBold">View Messages</ThemedText>
+          </ThemedView>
+        </View>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
+
+      {/* Recent Activity Section */}
+      <ThemedView style={styles.section}>
+        <ThemedText type="subtitle">Recent Activity</ThemedText>
+        <ThemedText>- Task "Design UI" marked as complete</ThemedText>
+        <ThemedText>- New message from Alex</ThemedText>
+        <ThemedText>- Alert: Update available</ThemedText>
       </ThemedView>
     </ParallaxScrollView>
   );
@@ -59,10 +69,35 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+    marginBottom: 16,
   },
-  stepContainer: {
+  section: {
+    marginBottom: 24,
     gap: 8,
-    marginBottom: 8,
+  },
+  statsRow: {
+    flexDirection: 'row',
+    gap: 12,
+    marginTop: 8,
+  },
+  statBox: {
+    flex: 1,
+    alignItems: 'center',
+    padding: 12,
+    borderRadius: 12,
+    backgroundColor: '#f0f4f8',
+  },
+  actionsRow: {
+    flexDirection: 'row',
+    gap: 12,
+    marginTop: 8,
+  },
+  actionButton: {
+    flex: 1,
+    alignItems: 'center',
+    padding: 12,
+    borderRadius: 12,
+    backgroundColor: '#e0e7ef',
   },
   reactLogo: {
     height: 178,
